@@ -6,6 +6,7 @@ import 'package:lottie/lottie.dart';
 import 'Constants/Colors.dart';
 import 'Constants/Strings.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'Constants/Path.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -34,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Center(
               child: Lottie.asset(
-                'assets/lottie/Logo.json', // Replace with the path to your Lottie JSON file
+                Path.LogoAnime, // Replace with the path to your Lottie JSON file
                 fit: BoxFit.cover,
                 width: 400, // Adjust the width and height as needed
                 height: 400,
