@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 # test1
 
 A new Flutter project.
+=======
+# cp2projectesi13
+
+2cpproject
+>>>>>>> main
 
 ## Getting Started
 

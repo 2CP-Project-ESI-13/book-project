@@ -1,11 +1,20 @@
 {
+<<<<<<< HEAD
     "name": "test1",
     "short_name": "test1",
+=======
+    "name": "cp2projectesi13",
+    "short_name": "cp2projectesi13",
+>>>>>>> main
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
+<<<<<<< HEAD
     "description": "A new Flutter project.",
+=======
+    "description": "2cpproject",
+>>>>>>> main
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
