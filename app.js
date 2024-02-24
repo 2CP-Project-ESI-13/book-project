@@ -14,10 +14,10 @@ const connectDB=require('./db/connect')
 app.use(express.json())
 
 
-app.use('/api/auth/',authRouter)
-app.use('/api/home/',homeRouter)
-app.use('/api/offers/',offersRouter)
-app.use('/api/profile/',profileRouter)
+app.use('/api/auth',authRouter)
+app.use('/api/home',homeRouter)
+app.use('/api/offers',offersRouter)
+app.use('/api/profile',profileRouter)
 
 
 

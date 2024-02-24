@@ -12,7 +12,10 @@ const BookSchema=new mongoose.Schema({
         type:String,
         required:[true,'provide the books name']
     },
-
+    image:{
+        type:String,
+        required:[true,'provide the books name']
+    },
     author:{
         type:String,
         required:[true,'provide the books name']
@@ -23,19 +26,24 @@ const BookSchema=new mongoose.Schema({
         required:[true,'provide the books name']
     },
 
-    category:{
+    description:{
         type:String,
+        required:[true,'provide the book description']
+    },
+
+    categories:{
+    type:[String],
         required:[true,'provide the books category']
     },
-    quantity_exchange:{
-        type:Number,
-    },
-    quantity_bib:{
-        type:Number,
-        required:[true,'provide the quantity']
-    },
-    owner:{
-        type:mongoose.Types.ObjectId,
+    // quantity_exchange:{
+    //     type:Number,
+    // },
+    // quantity_bib:{
+    //     type:Number,
+    //     required:[true,'provide the quantity']
+    // },
+    owners:{
+        type:[mongoose.Types.ObjectId],
         required:[true,'no user'],
         ref:'USER'
     }

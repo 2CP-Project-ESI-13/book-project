@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
-const bcrypt=require('bcryptjs')
-const jwt=require('jsonwebtoken')
+// const bcrypt=require('bcryptjs')
+// const jwt=require('jsonwebtoken')
 require('dotenv').config()
 
 
@@ -21,30 +21,33 @@ const UserSchema=new mongoose.Schema({
         minlength:6
 
     },
-    collection:{type:[String]},
+    collection_list:{type:[String]},//list of isbn
 
-    wishlist:{type:[String]},
+    wishlist:{type:[String]},//list of isbn
 
-    bibs_id:{type:[mongoose.Types.ObjectId]},
+    //bibs_id:{type:[mongoose.Types.ObjectId]},
 
-    offers_id:{type:[mongoose.Types.ObjectId]},
+    offers_a_id:{type:[mongoose.Types.ObjectId]},
+
+    offers_b_id:{type:[mongoose.Types.ObjectId]},
+
 
 })
 
 
-UserSchema.pre('save',async function(next){
-const salt=await bcrypt.genSalt(10)
-this.password=await bcrypt.hash(this.password,salt)
-next()
-})
+// UserSchema.pre('save',async function(next){
+// const salt=await bcrypt.genSalt(10)
+// this.password=await bcrypt.hash(this.password,salt)
+// next()
+// })
 
 
-UserSchema.methods.createToken=function(){
-    return jwt.sign({userID:this._id,name:this.name},process.env.JWT_SECRET,{expiresIn:process.env.JWT_LIFETIME})
-}
+// UserSchema.methods.createToken=function(){
+//     return jwt.sign({userID:this._id,name:this.name},process.env.JWT_SECRET,{expiresIn:process.env.JWT_LIFETIME})
+// }
 
-UserSchema.methods.comparePasswords=async function(password){
-    return await bcrypt.compare(password,this.password)
-}
+// UserSchema.methods.comparePasswords=async function(password){
+//     return await bcrypt.compare(password,this.password)
+// }
 
 module.exports=mongoose.model('user',UserSchema)

@@ -2,13 +2,13 @@ const mongoose=require('mongoose')
 
 const OfferSchema=new mongoose.Schema({
 
-    user_a:{
+    user_a_id:{
         type:mongoose.Types.ObjectId,
         required:[true,'provide the user a']
-    }
+    }//mol lktab
     ,
 
-    user_b:{
+    user_b_id:{
         type:mongoose.Types.ObjectId,
         required:[true,'provide the user b']
     },
@@ -18,7 +18,7 @@ const OfferSchema=new mongoose.Schema({
         required:[true,'provide the book a isbn']
     },
 
-    isbn_b:{
+    isbns_b:{
         type:[String],
         required:[true,'provide the books b isbn']
     },
