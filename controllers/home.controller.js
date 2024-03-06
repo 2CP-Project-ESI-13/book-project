@@ -1,6 +1,6 @@
 const { query } = require('express')
-const Book=require('../models/book')
-const User=require('../models/user')
+const Book=require('../models/book.model')
+const User=require('../models/user.model')
 
 
 const book_api=require('../middlewares/books_api')

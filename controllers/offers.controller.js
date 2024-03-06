@@ -1,7 +1,7 @@
-const User=require("../models/user")
-const Offer=require("../models/offers");
-const Book=require("../models/book")
-const offers = require("../models/offers");
+const User=require("../models/user.model")
+const Offer=require("../models/offers.model");
+const Book=require("../models/book.model")
+const offers = require("../models/offers.model");
 
 
 const getOffersList=async (req,res)=>{

@@ -2,7 +2,7 @@ const express=require('express')
 
 const router=express.Router()
 
-const {getOffersList,getOffer,acceptOffer}=require('../controllers/offers')
+const {getOffersList,getOffer,acceptOffer}=require('../controllers/offers.controller')
 
 
 

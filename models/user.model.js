@@ -1,13 +1,12 @@
 const mongoose=require('mongoose')
-// const bcrypt=require('bcryptjs')
-// const jwt=require('jsonwebtoken')
+
 require('dotenv').config()
 
 
 const UserSchema=new mongoose.Schema({
-    name:{
+    username:{
         type:String,
-        required:[true,"please enter a valid name"]
+        required:[true,"please enter a valid username"]
     },
     email:{
         type:String,
@@ -30,9 +29,13 @@ const UserSchema=new mongoose.Schema({
     offers_a_id:{type:[mongoose.Types.ObjectId]},
 
     offers_b_id:{type:[mongoose.Types.ObjectId]},
+    photo: {
+        type: String,
+        default: "https://i.seadn.io/gcs/files/3085b3fc65f00b28699b43efb4434eec.png?auto=format&dpr=1&w=1000",
+        
+    }
 
-
-})
+}, { timestamps: true })
 
 
 // UserSchema.pre('save',async function(next){
@@ -50,4 +53,4 @@ const UserSchema=new mongoose.Schema({
 //     return await bcrypt.compare(password,this.password)
 // }
 
-module.exports=mongoose.model('user',UserSchema)
+module.exports=mongoose.model('userTest',UserSchema)

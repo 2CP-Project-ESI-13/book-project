@@ -1,11 +1,16 @@
-const express=require('express')
+const express = require('express')
+const {
+  signup,
+  signin,
+  google,
+  signout,
+} = require("../controllers/auth.controller.js");
 
-const router=express.Router()
+const router = express.Router();
 
-// const {getAllJobs,getJob,createJob,deleteJob,updateJob}=require('../controllers/jobs')
+router.post("/signup", signup);
+router.post("/signin", signin);
+router.post("/google", google);
+router.get("/signout", signout);
 
-// router.route('/').get(getAllJobs).post(createJob)
-
-// router.route('/:id').get(getJob).patch(updateJob).delete(deleteJob)
-
-module.exports=router
+module.exports = router;
