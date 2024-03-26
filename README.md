@@ -44,3 +44,14 @@
 		password,
 		} 
 		```
+
+
+<h1>How to use the homepage api section</h1>
+
+* send a request with a body like this:
+```json
+{
+	_id:"" //user id from mongodb (extract the long string only)
+}
+```
+* you will find the routes in the /routes/home.js

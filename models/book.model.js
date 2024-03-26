@@ -10,30 +10,27 @@ const BookSchema=new mongoose.Schema({
 
     name:{
         type:String,
-        required:[true,'provide the books name']
+
     },
     image:{
         type:String,
-        required:[true,'provide the books name']
+
     },
     author:{
         type:String,
-        required:[true,'provide the books name']
+
     },
 
     language:{
         type:String,
-        required:[true,'provide the books name']
     },
 
     description:{
         type:String,
-        required:[true,'provide the book description']
     },
 
     categories:{
     type:[String],
-        required:[true,'provide the books category']
     },
     // quantity_exchange:{
     //     type:Number,

@@ -20,9 +20,9 @@ const UserSchema=new mongoose.Schema({
         minlength:6
 
     },
-    collection_list:{type:[String]},//list of isbn
+    collection_list:[String],//list of isbn
 
-    wishlist:{type:[String]},//list of isbn
+    wishlist:[String],//list of isbn
 
     //bibs_id:{type:[mongoose.Types.ObjectId]},
 
@@ -54,4 +54,4 @@ const UserSchema=new mongoose.Schema({
 //     return await bcrypt.compare(password,this.password)
 // }
 
-module.exports=mongoose.model('userTest',UserSchema)
+module.exports=mongoose.model('user',UserSchema)

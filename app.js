@@ -22,9 +22,6 @@ app.use('/api/profile',profileRouter)
 
 
 const port=3000
-
-
-
 start =async ()=>{
     try{
         await connectDB(process.env.CONNECTION_STRING)

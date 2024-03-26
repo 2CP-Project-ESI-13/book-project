@@ -4,9 +4,9 @@ const { errorHandler } = require("../utils/error.js");
 const jwt = require("jsonwebtoken");
 
 module.exports.signup = async (req, res, next) => {
-  const { username, email, password, photo } = req.body;
+  const password = req.body.password;
   const hashedPassword = bcryptjs.hashSync(password, 10);
-  const user = new UserModel({ username, email, password: hashedPassword, photo });
+  const user = new UserModel({ ...req.body, password: hashedPassword });
   try {
     await user.save();
     res.status(201).json({ message: "created successfully!" });
@@ -22,7 +22,10 @@ module.exports.signin = async (req, res, next) => {
     if (!existingUser) {
       return next(errorHandler(404, "user not found!"));
     }
-    const existingPassword = bcryptjs.compareSync(password, existingUser.password);
+    const existingPassword = bcryptjs.compareSync(
+      password,
+      existingUser.password
+    );
     if (!existingPassword) {
       return next(errorHandler(401, "wrong credentials!"));
     }
@@ -67,9 +70,11 @@ module.exports.google = async (req, res, next) => {
 
 module.exports.signout = async (req, res, next) => {
   try {
-    res.clearCookie("access_token").status(200).json({"message": "user logged out successfully"})
+    res
+      .clearCookie("access_token")
+      .status(200)
+      .json({ message: "user logged out successfully" });
   } catch (error) {
-    next(error)
+    next(error);
   }
 };
-
