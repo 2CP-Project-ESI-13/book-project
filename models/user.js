@@ -4,36 +4,24 @@ const mongoose=require('mongoose')
 require('dotenv').config()
 
 
-const UserSchema=new mongoose.Schema({
-    name:{
-        type:String,
-        required:[true,"please enter a valid name"]
-    },
-    email:{
-        type:String,
-        required:[true,"please enter a valid email"],
-        match:[/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,'please enter a valid email'],
-        unique:true
-    },
-    password:{
-        type:String,
-        required:[true,"please enter a valid password"],
-        minlength:6
 
-    },
-    collection_list:{type:[String]},//list of isbn
-
-    wishlist:{type:[String]},//list of isbn
-
-    //bibs_id:{type:[mongoose.Types.ObjectId]},
-
-    offers_a_id:{type:[mongoose.Types.ObjectId]}, //ykon houwa mol lktab
-
-    offers_b_id:{type:[mongoose.Types.ObjectId]},//ykon houwa talab lktab
-
-
-})
-
+const UserSchema = mongoose.Schema({
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    name: { type:String,required:true},
+    phone:{type:String,required:true,unique: true},
+    categories: {type: [String], required:true},
+    verified: {type: Boolean, required:true},
+    verifyLink:{type:String,unique:true},
+    ownedbooks: {type :[String]}, //list of isbn
+    cart:{type:[String]},                //ancient wishlist , list of isbn same for wishlist
+    wishlist:{type:[String]},
+    offers_a:{type:[mongoose.Types.ObjectId]}, //see offers models
+    offers_b:{type:[mongoose.Types.ObjectId]},
+    photo:{type:String,default:"https://i.seadn.io/gcs/files/3085b3fc65f00b28699b43efb4434eec.png?auto=format&dpr=1&w=1000"},
+    resetPasswordToken:{type:String},
+    resetPasswordExpires:{type:String}
+  });
 
 // UserSchema.pre('save',async function(next){
 // const salt=await bcrypt.genSalt(10)
