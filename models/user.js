@@ -27,9 +27,9 @@ const UserSchema=new mongoose.Schema({
 
     //bibs_id:{type:[mongoose.Types.ObjectId]},
 
-    offers_a_id:{type:[mongoose.Types.ObjectId]},
+    offers_a_id:{type:[mongoose.Types.ObjectId]}, //ykon houwa mol lktab
 
-    offers_b_id:{type:[mongoose.Types.ObjectId]},
+    offers_b_id:{type:[mongoose.Types.ObjectId]},//ykon houwa talab lktab
 
 
 })

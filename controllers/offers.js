@@ -1,10 +1,10 @@
 const User=require("../models/user")
 const Offer=require("../models/offers");
 const Book=require("../models/book")
-const offers = require("../models/offers");
 
 
 const getOffersList=async (req,res)=>{
+    //offers li rahoum waslinlah
     const user = await User.findOne({ _id: req.headers.value });
     const offers_id_list=user.offers_a_id
 
@@ -17,7 +17,6 @@ const getOffersList=async (req,res)=>{
     }))
     res.json(offers)
     
-
 }
 
 const getOffer=async(req,res)=>{
@@ -31,20 +30,27 @@ const getOffer=async(req,res)=>{
 const acceptOffer=async(req,res)=>{
     try {
         //delete the exchanged book from the other offers 
-        const { accepted_book_isbn, offer_id } = req.body;  
-        const offer=await Offer.findByIdAndUpdate(offer_id,{ status: "accepted" }, { new: true })
+
+        const { accepted_book_isbn, offer_id,user_b_id } = req.body;  
+
+        await Offer.findByIdAndUpdate(offer_id,{ status: "accepted" }, { new: true })
 
   
-        const updated_offers=await Offer.find({isbns_b:{$in:[accepted_book_isbn]}})
-        await Promise.all (updated_offers.map(async (updated_offer)=>{
-            const isbn_b_index=updated_offer.isbns_b.indexOf(accepted_book_isbn)
-            updated_offer.isbns_b.splice(isbn_b_index,1)
-            if (updated_offer.isbns_b.length!=0){
-                await updated_offer.save()
-            }
-            else
-            {await updated_offer.remove();
-            }
+        const updated_offers=await Offer.find({user_b_id:user_b_id,isbns_b:{$in:[accepted_book_isbn]}})
+        await Promise.all (
+                updated_offers.map(async (updated_offer)=>{
+                const isbn_b_index=updated_offer.isbns_b.indexOf(accepted_book_isbn)
+                updated_offer.isbns_b.splice(isbn_b_index,1)
+                if (updated_offer.isbns_b.length!=0){
+                    await updated_offer.save()
+                }
+                else
+                {
+                await User.findOneAndUpdate({_id:updated_offer.user_b_id},{$pull:{offers_b_id:updated_offer._id}},{new:true})
+                await User.findOneAndUpdate({_id:updated_offer.user_a_id},{$pull:{offers_a_id:updated_offer._id}},)
+                await updated_offer.remove();
+                
+                }
             
             }))
       
@@ -67,6 +73,7 @@ const rejectOffer=async(req,res)=>{
     } catch (error) {
         
     }
+    
     
 }
 
@@ -91,7 +98,6 @@ const postOffer=async(req,res)=>{
         status:'on hold',
     }
 
-    // await Offer.create(offer)
     try {
         const createdOffer = await Offer.create(offer);
         const user_a=await User.findById(user_a_id)
@@ -116,5 +122,6 @@ const postOffer=async(req,res)=>{
 module.exports={
     getOffer,
     getOffersList,
-    acceptOffer
+    acceptOffer,
+    postOffer
 }

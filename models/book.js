@@ -4,31 +4,31 @@ const BookSchema=new mongoose.Schema({
 
     isbn:{
         type:String,
-        required:[true,'provide the books name']
+        required:[true,'provide the books isbn']
     }
     ,
 
-    name:{
+    title:{
         type:String,
-        required:[true,'provide the books name']
+        required:[true,'provide the books title']
     },
     image:{
         type:String,
-        required:[true,'provide the books name']
+        required:[true,'provide the books image']
     },
     author:{
         type:String,
-        required:[true,'provide the books name']
+        required:[true,'provide the books author']
     },
 
     language:{
         type:String,
-        required:[true,'provide the books name']
+        //required:[true,'provide the books language']
     },
 
     description:{
         type:String,
-        required:[true,'provide the book description']
+        //required:[true,'provide the book description']
     },
 
     categories:{

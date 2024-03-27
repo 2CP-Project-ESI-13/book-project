@@ -7,12 +7,14 @@ const book_categories=async(isbn)=>{
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        return data.docs[0].subject.splice(5);
-        
+        console.log(data)
+        console.log(data.docs[0].subject)
+        return data.docs[0].subject;
+
     } catch (error) {
         console.error('Error fetching data:', error);
         throw error; 
-        
+
     }
 
 }
